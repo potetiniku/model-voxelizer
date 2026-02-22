@@ -31,7 +31,7 @@ public class AnimationPointCloudExporter : MonoBehaviour
             WriteToXyzFile($@"C:\ModelVoxelizer\animation_{time:F2}s.xyz");
 
             Debug.Log($"Sampling at time: {time:F2}s");
-            await UniTask.WaitForSeconds(0.5f);
+            await UniTask.WaitForSeconds(frameTime);
         }
     }
 
