@@ -108,6 +108,6 @@ InitTestScene*.unity*
 !/[Aa]ssets/External/MMD4Mecanim/README.md
 
 # ホロライブのMMDは再配布が禁止されているため除外
-/[Aa]ssets/Scenes/ModelVoxelizationScene/Models/Azki/Mmd/**
+/[Aa]ssets/Scenes/ModelVoxelizationScene/Models/Azki/**
 !/[Aa]ssets/Scenes/ModelVoxelizationScene/Models/Azki/Mmd/
 !/[Aa]ssets/Scenes/ModelVoxelizationScene/Models/Azki/Mmd/README.md
