@@ -97,3 +97,12 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+# ----------------
+# 手動追加
+# ----------------
+
+# MMD4Mecanimは再配布が禁止されているため除外
+/[Aa]ssets/External/MMD4Mecanim/**
+!/[Aa]ssets/External/MMD4Mecanim/
+!/[Aa]ssets/External/MMD4Mecanim/README.md
