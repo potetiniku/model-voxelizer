@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class AnimationPointCloudExporter : MonoBehaviour
 {
-    [SerializeField] private SkinnedMeshRenderer[] voxelizedMeshes;
-    [SerializeField] private GameObject animationRoot;
+    // FBXから生成したGameObjectのトップ
+    [SerializeField] private GameObject target;
+
     [SerializeField] private AnimationClip clip;
     [SerializeField] private float framesPerSecond = 60f;
 
@@ -27,7 +28,7 @@ public class AnimationPointCloudExporter : MonoBehaviour
 
         for (float time = 0f; time < clip.length; time += frameTime)
         {
-            clip.SampleAnimation(animationRoot, time);
+            clip.SampleAnimation(target, time);
             WriteToXyzFile($@"C:\ModelVoxelizer\animation_{time:F2}s.xyz");
 
             Debug.Log($"Sampling at time: {time:F2}s");
@@ -39,7 +40,8 @@ public class AnimationPointCloudExporter : MonoBehaviour
     {
         MeshVoxelizer meshVoxelizer = new MeshVoxelizer();
 
-        var xyzRecords = voxelizedMeshes
+        var xyzRecords = target
+            .GetComponentsInChildren<SkinnedMeshRenderer>()
             .SelectMany(m => meshVoxelizer.Voxelize(m, voxelSize).SelectMany(t => t))
             .Select(p => new Point(new Vector3(-p.Position.x, p.Position.y, p.Position.z), p.Color))
             .Select(p => p.ToXyzRecord())
